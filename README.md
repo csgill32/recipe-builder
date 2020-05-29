@@ -7,7 +7,7 @@ Make a website that allows users to build recipes by adding instructions and ing
 Recipes
 Ingredients
 
-###User stories:
+### User stories
 * Stretch goals
 Users can:
 View landing(home) page
