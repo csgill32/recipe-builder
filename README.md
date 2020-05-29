@@ -8,7 +8,7 @@ Recipes
 Ingredients
 
 ### User stories
-* Stretch goals
+- * Stretch goals
 Users can:
 View landing(home) page
 * Create profile
