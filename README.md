@@ -1,13 +1,13 @@
 # recipe-builder
 
-MVP
+### MVP
 Make a website that allows users to build recipes by adding instructions and ingredients. Users will be able to add, update and delete both recipes and ingredients from those recipes. 
 
-Two-Models
+### Two-Models
 Recipes
 Ingredients
 
-User stories:
+###User stories:
 * Stretch goals
 Users can:
 View landing(home) page
@@ -41,10 +41,3 @@ Add a search bar to find specific recipes or ingredients.
 Authentication/authorization.
 Embedding to create a new version of the recipe.
 Hover over navigation to display drop-down.
-
-Notes:
-Embedded vs reference 
-Search bar: (stretch)
-Simple version: keyword/find function
-Search with multiple parameters (stretch)
-
