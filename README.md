@@ -15,22 +15,22 @@ Users can:
 * Navigate to recipes index page
 * Create a recipe
 * On Recipe Index:
-*- Navigate back to home page
-- View list of recipes
-- Edit recipes
-- Create new recipes
+ - * Navigate back to home page
+* - View list of recipes
+* - Edit recipes
+* - Create new recipes
 * On Create Recipe:
-- Navigate back to home page and recipe index
-- Fill out form to create recipe
+* - Navigate back to home page and recipe index
+* - Fill out form to create recipe
 * On Show Recipe:
-- Navigate back to home and recipe index page
-- Edit and Delete recipe
-- Add ingredient
-- View ingredients and ingredient data on page
-- Edit/Delete ingredients from list
-- View recipe instructions (auto-populated from Recipe Create form)
+* - Navigate back to home and recipe index page
+* - Edit and Delete recipe
+* - Add ingredient
+* - View ingredients and ingredient data on page
+* - Edit/Delete ingredients from list
+* - View recipe instructions (auto-populated from Recipe Create form)
 * On Edit Recipe:
-- Navigate back to home and recipe index page
+* - Navigate back to home and recipe index page
 - View current (auto-populated) info
 - Edit form
 
