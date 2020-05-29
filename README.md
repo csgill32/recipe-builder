@@ -35,7 +35,7 @@ Users can:
 * - Edit form
 
 
-* Stretch Goals:
+### Stretch Goals:
 Add a search bar to find specific recipes or ingredients.
 Authentication/authorization.
 Embedding to create a new version of the recipe.
