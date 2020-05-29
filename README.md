@@ -14,8 +14,7 @@ Users can:
 * Create profile
 * Navigate to recipes index page
 * Create a recipe
-* On Recipe Index:
- - * Navigate back to home page
+* On Recipe Index: - Navigate back to home page
 * - View list of recipes
 * - Edit recipes
 * - Create new recipes
@@ -31,8 +30,8 @@ Users can:
 * - View recipe instructions (auto-populated from Recipe Create form)
 * On Edit Recipe:
 * - Navigate back to home and recipe index page
-- View current (auto-populated) info
-- Edit form
+* - View current (auto-populated) info
+* - Edit form
 
 
 * Stretch Goals:
