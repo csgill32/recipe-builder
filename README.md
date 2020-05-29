@@ -14,7 +14,8 @@ Users can:
 * Create profile
 * Navigate to recipes index page
 * Create a recipe
-* On Recipe Index: - Navigate back to home page
+* On Recipe Index: 
+* - Navigate back to home page
 * - View list of recipes
 * - Edit recipes
 * - Create new recipes
