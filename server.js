@@ -26,10 +26,10 @@ app.get("/", function (req, res) {
     res.render("index");
 });
 
-// author routes
-app.use("/recipes", controllers.recipe);
-// article routes
-app.use("/ingredients", controllers.ingredient);
+// // recipe routes
+// app.use("/recipes", controllers.recipe);
+// // ingredient routes
+// app.use("/ingredients", controllers.ingredient);
 
 /* Bind Server to Port */
 app.listen(PORT, function () {
