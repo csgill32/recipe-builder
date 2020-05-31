@@ -15,6 +15,11 @@ router.get('/', function (req, res) {
     });
 });
 
+// new route
+router.get('/new', function (req, res) {
+    res.render("ingredients/new");
+})
+
 
 
 
