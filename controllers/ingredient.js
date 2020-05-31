@@ -32,7 +32,54 @@ router.post('/', function (req, res) {
     });
 });
 
+// show route
+router.get("/:id", function (req, res) {
+    db.Ingredient.findById(req.params.id, function (error, foundIngredient) {
+        if (error) {
+            console.log(error);
+            res.send({ message: "Internal server error." });
+        } else {
+            const context = { ingredient: foundIngredient }
+            res.render("ingredients/show", context);
+        }
+    });
+});
 
+// edit <- view
+router.get("/:id/edit", function (req, res) {
+    db.Ingredient.findById(req.params.id, function (err, foundIngredient) {
+        if (err) {
+            console.log(err);
+            res.send({ message: "Internal Server Error" });
+        } else {
+            const context = { ingredient: foundIngredient }
+            res.render("ingredients/edit", context);
+        }
+    });
+});
 
+// update <- db change
+router.put("/:id", function (req, res) {
+    db.Ingredient.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, updatedIngredient) {
+        if (err) {
+            console.log(err);
+            res.send({ message: "Internal Server Error" });
+        } else {
+            res.redirect(`/ingredients/${updatedIngredient._id}`);
+        }
+    });
+});
+
+// delete
+router.delete("/:id", function (req, res) {
+    db.Ingredient.findByIdAndDelete(req.params.id, function (err, deletedIngredient) {
+        if (err) {
+            console.log(err);
+            res.send({ message: "Internal Server Error" });
+        } else {
+            res.redirect('/ingredients');
+        }
+    });
+});
 
 module.exports = router;

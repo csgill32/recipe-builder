@@ -8,7 +8,19 @@
 </head>
 
 <body>
-    <h1>Ingredient Home Page</h1>
+    <header>
+        <h1>Ingredient Home Page</h1>
+    </header>
+
+    <h2>List of Ingredients</h2>
+    <ul>
+        <% ingredients.forEach(ingredient => { %>
+        <li>
+            <a href="/ingredients/<%= ingredient._id %>"><%= ingredient.name %></a>
+        </li>
+        <% }); %>
+    </ul>
+
 </body>
 
 </html>
