@@ -26,9 +26,9 @@ app.get("/", function (req, res) {
     res.render("index");
 });
 
-// author routes
+// recipe routes
 app.use("/recipes", controllers.recipe);
-// article routes
+// ingredient routes
 app.use("/ingredients", controllers.ingredient);
 
 /* Bind Server to Port */
