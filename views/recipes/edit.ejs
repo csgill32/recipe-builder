@@ -20,14 +20,14 @@
         </nav>
     </header>
     <main>
-        <form action="/recipes" method="POST">
-            <input type="text" name="name" placeholder="Recipe Name">
-            <input type="text" name="category" placeholder="Category">
-            <input type="date" name="date created">
+        <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+            <input type="text" name="name" value="<%= recipe.name %>">
+            <input type="text" name="category" value="<%= recipe.category %>">
+            <input type="date" name="dateCreated" value="<%= recipe.dateCreated %>">
             <p>
-            <textarea type="text" name="directions" placeholder="Directions"></textarea>
+            <textarea type="text" name="directions" value="<%= recipe.directions %>"></textarea>
             </p>
-            <input type="submit" value="Edit Recipe"> 
+            <input type="submit" value="Edit Recipe">  
         </form>
     </main>
 </body>

@@ -45,4 +45,41 @@ router.get("/:id", function(req, res) {
     });    
 });
 
+// Edit route
+router.get("/:id/edit", function(req, res) {
+    db.Recipe.findById(req.params.id, function(error, foundRecipe) {
+        if (error) {
+            console.log(error);
+            res.send({message: "Internal server error."});
+        } else {
+            const context = {recipe: foundRecipe};
+            res.render("recipes/edit", context);
+        }
+    });
+});
+
+// Update route
+router.put("/:id", function(req, res) {
+    db.Recipe.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(error, updatedRecipe) {
+        if (error) {
+            console.log(error);
+            res.send({message: "Internal server error."});
+        } else {
+            res.redirect(`/recipes/${updatedRecipe._id}`)
+        }
+    });
+});
+
+// Delete route
+router.delete("/:id", function(req, res) {
+    db.Recipe.findByIdAndDelete(req.params.id, function(error, deletedRecipe) {
+        if (error) {
+            console.log(error);
+            res.send({message: "Internal server error."});
+        } else {
+            res.redirect("/recipes");
+        }
+    });
+});
+
 module.exports = router;
