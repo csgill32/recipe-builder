@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredient New Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>New Ingredient Page</h1>
+    </header>
+
+    <main>
+        <form action="/ingredients" method="POST">
+            <input type="text" name="name" placeholder="Ingredient Name" />
+            <input type="number" name="quantity" placeholder="Quantity" />
+            <input type="text" name="measurement" placeholder="Measurement (cups, tbsp, lbs, oz)" />
+            <input type="submit" value="Add Ingredient" />
+        </form>
+    </main>
+
+</body>
+
+</html>

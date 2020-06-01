@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredient Show Page</title>
+</head>
+
+<body>
+    <header>
+        <h1>Ingredient Show Page</h1>
+    </header>
+
+    <main>
+        <h2>Ingredient Info</h2>
+        <a href="/ingredients/<%= ingredient._id %>/edit">Edit</a>
+        <ul>
+            <li>Name: <%= ingredient.name %> </li>
+            <li>Quantity: <%= ingredient.quantity %> </li>
+            <li>Measurement: <%= ingredient.measurement %> </li>
+        </ul>
+
+        <form action="/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+
+    </main>
+
+</body>
+
+</html>
