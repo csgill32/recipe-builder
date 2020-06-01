@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("https://i.imgur.com/zsIWLh1.jpg?1");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #F0F0F0;
+}
+
+li.header {
+    color: #847f7a;
+    font-size: 60px;
+    font-family: 'Sacramento', cursive;;
+}
+
+li.nav {
+    font-size: 25px;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: #847f7a;
+}
+
+a:hover {
+    color: #CAC8C6;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid #847f7a;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    list-style-type: none;
+    background-color: #FFE8DF;
+}
+
