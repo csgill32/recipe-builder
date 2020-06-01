@@ -19,6 +19,15 @@
             </ul>
         </nav>
     </header>
-    
+    <main>
+        <h2>List of Recipes</h2>
+        <ul>
+            <% for (let index = 0; index < recipes.length; index++) { %>
+                <li>
+                    <a href="/recipes/"<%=recipes[index._id%>"><%=recipes[index].name%></a>
+                </li>
+           <% } %>
+        </ul>
+    </main>
 </body>
 </html>
