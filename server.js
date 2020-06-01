@@ -16,6 +16,7 @@ const PORT = 4000;
 app.set("view engine", "ejs");
 
 /* Middleware */
+app.use(express.static(__dirname + '/public'));
 app.use(bodyparser.urlencoded({ extended: false })); // this will give us req.body
 app.use(methodOverride("_method")); // allow change in method in form
 
