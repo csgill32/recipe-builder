@@ -27,7 +27,7 @@ app.get("/", function (req, res) {
 });
 
 // recipe routes
-// app.use("/recipes", controllers.recipe);
+app.use("/recipes", controllers.recipe);
 // ingredient routes
 app.use("/ingredients", controllers.ingredient);
 
