@@ -22,11 +22,11 @@
     <main>
         <h2>List of Recipes</h2>
         <ul>
-            <% for (let index = 0; index < recipes.length; index++) { %>
+            <% recipes.forEach(recipe => { %>
                 <li>
-                    <a href="/recipes/"<%=recipes[index._id%>"><%=recipes[index].name%></a>
+                    <a href="/recipes/<%=recipe._id%>"><%=recipe.name%></a>
                 </li>
-           <% } %>
+           <% }); %>
         </ul>
     </main>
 </body>

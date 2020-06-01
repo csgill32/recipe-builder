@@ -4,12 +4,15 @@ const db = require("../models")
 
 // Index route
 router.get("/", function(req, res) {
+    db.Recipe.find({}, function(error, allRecipes) {
     if (error) {
         console.log(error);
         res.send({message: "Internal server error."});
     } else {
-        res.render("recipes/index");
+        const context = {recipes: allRecipes};
+        res.render("recipes/index", context);
     }
+ });
 });
 
 // New route
@@ -37,7 +40,7 @@ router.get("/:id", function(req, res) {
             res.send({message: "Internal server error."});
         } else {
             const context = {recipe: foundRecipe};
-            res.redirect("/recipes");
+            res.render("recipes/show", context);
         }
     });    
 });
