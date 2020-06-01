@@ -4,15 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
     <title>Ingredient Edit Page</title>
 </head>
 
 <body>
     <header>
-        <h1>Edit <%= ingredient.name %> </h1>
+        <ul class="nav-bar">
+            <li class="header">Recipes</li>
+            <li class="nav"><a href="/">Home</a></li>
+            <li class="nav"><a href="/recipes">Recipes</a></li>
+            <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
+        </ul>
     </header>
-
     <main>
+        <h2>Edit <%= ingredient.name %> </h2>
         <form action="/ingredients/<%= ingredient._id %>?_method=PUT" method="POST">
             <input type="text" name="name" value="<%= ingredient.name %>" />
             <input type="number" name="quantity" value="<%= ingredient.quantity %>" />
