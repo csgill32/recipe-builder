@@ -17,8 +17,16 @@ router.get('/', function (req, res) {
 
 // new route
 router.get('/new', function (req, res) {
-    res.render("ingredients/new");
-})
+    db.Recipe.find({}, function (error, allRecipes) {
+        if (error) {
+            console.log(error);
+            res.send({ message: "Internal server error." });
+        } else {
+            const context = { recipes: allRecipes };
+            res.render("ingredients/new", context);
+        }
+    });
+});
 
 // create route
 router.post('/', function (req, res) {
@@ -27,14 +35,23 @@ router.post('/', function (req, res) {
             console.log(error);
             res.send({ message: "Internal server error." });
         } else {
-            res.redirect("/ingredients");
+            db.Recipe.findById(createdIngredient.recipe, function (error, foundRecipe) {
+                if (error) {
+                    console.log(error);
+                    res.send({ message: "Internal Sever Error" });
+                } else {
+                    foundRecipe.ingredients.push(createdIngredient);
+                    foundRecipe.save();
+                    res.redirect("/ingredients");
+                }
+            })
         }
     });
 });
 
 // show route
 router.get("/:id", function (req, res) {
-    db.Ingredient.findById(req.params.id, function (error, foundIngredient) {
+    db.Ingredient.findById(req.params.id).populate("recipe").exec(function (error, foundIngredient) {
         if (error) {
             console.log(error);
             res.send({ message: "Internal server error." });
@@ -77,7 +94,16 @@ router.delete("/:id", function (req, res) {
             console.log(err);
             res.send({ message: "Internal Server Error" });
         } else {
-            res.redirect('/ingredients');
+            db.Recipe.findById(deletedIngredient.recipe, function (error, foundRecipe) {
+                if (err) {
+                    console.log(err);
+                    res.send({ message: "Internal Server Error" });
+                } else {
+                    foundRecipe.ingredients.remove(deletedIngredient);
+                    foundRecipe.save();
+                    res.redirect('/ingredients');
+                }
+            });
         }
     });
 });
