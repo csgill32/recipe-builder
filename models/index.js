@@ -1,9 +1,9 @@
 
 const mongoose = require("mongoose");
 
-const conenctionString = "mongodb://localhost:27017/";
+const connectionString = "mongodb://localhost:27017/";
 
-mongoose.connect(conenctionString, {
+mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
