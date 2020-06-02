@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
-const recipeSchema = mongoose.Schema({
-    name: { type: "String", required: true },
-    category: { type: "String" },
+const recipeSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    category: { type: String },
     dateCreated: { type: Date },
-    directions: { type: "String" },
+    directions: { type: String },
     ingredients: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ingredient'

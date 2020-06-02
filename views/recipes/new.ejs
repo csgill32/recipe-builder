@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
     <title>New Recipe Page</title>
 </head>
+
 <body>
     <header>
-        <h1>Create a Recipe</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/recipes">Recipes Index</a>
-                </li>
-            </ul>
-        </nav>
+        <ul class="nav-bar">
+            <li class="header">Recipes</li>
+            <li class="nav"><a href="/">Home</a></li>
+            <li class="nav"><a href="/recipes">Recipes</a></li>
+            <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
+            <li class="nav"><a href="/ingredients">Ingredients</a></li>
+            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li>
+        </ul>
     </header>
+
     <main>
         <form action="/recipes" method="POST">
             <input type="text" name="name" placeholder="Recipe Name">
             <input type="text" name="category" placeholder="Category">
             <input type="date" name="dateCreated">
-            <p> 
-            <textarea type="text" name="directions" placeholder="Directions"></textarea>
+            <p>
+                <textarea type="text" name="directions" placeholder="Directions"></textarea>
             </p>
-            <input type="submit" value="Create Recipe"> 
+            <input type="submit" value="Create Recipe">
         </form>
     </main>
 </body>
+
 </html>

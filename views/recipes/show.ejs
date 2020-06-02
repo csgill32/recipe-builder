@@ -4,33 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
     <title>Recipe Show Page</title>
 </head>
 
 <body>
     <header>
-        <h1>Show Recipe</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/recipes">Recipes</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <section>
-        <h2> <%= recipe.name %> </h2>
-        <a href="/recipes/<%= recipe._id %>/edit">Edit</a>
-        <ul>
-            <li>Recipe: <%= recipe.name %> </li>
-            <li>Category: <%= recipe.category %> </li>
-            <li>Date Created: <%= recipe.dateCreated %> </li>
-            <li>Direction: <%= recipe.directions %> </li>
-
+        <ul class="nav-bar">
+            <li class="header">Recipes</li>
+            <li class="nav"><a href="/">Home</a></li>
+            <li class="nav"><a href="/recipes">Recipes</a></li>
+            <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
+            <li class="nav"><a href="/ingredients">Ingredients</a></li>
+            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li>
         </ul>
+    </header>
+
+    <h2> <%= recipe.name %></h2>
+    <a href="/recipes/<%= recipe._id %>/edit">Edit</a>
+    <ul>
+        <li>Recipe: <%= recipe.name %> </li>
+        <li>Category: <%= recipe.category %> </li>
+        <li>Directions: <%= recipe.directions %> </li>
+    </ul>
+
     </section>
     <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete">
@@ -38,10 +36,12 @@
 
     <section>
         <h2>Ingredients</h2>
-        <a href="/ingredients/new/">Add Ingredient</a>
-        <% recipe.ingredients.forEach(ingredient => { %>
-        <a href="/ingredients/edit/<%= ingredient._id %>"><%= ingredient.name %> </a>
-        <% }) %>
+        <a href="/ingredients/new">Add New Ingredient</a>
+        <p>
+            <% recipe.ingredients.forEach(ingredient => { %>
+            <li><a href="/ingredients/<%= ingredient._id %>"><%= ingredient.name %> </a></li>
+            <% }) %>
+        </p>
     </section>
 
 </body>

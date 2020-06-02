@@ -42,7 +42,7 @@ router.post('/', function (req, res) {
                 } else {
                     foundRecipe.ingredients.push(createdIngredient);
                     foundRecipe.save();
-                    res.redirect("/ingredients");
+                    res.redirect("/recipes");
                 }
             })
         }
@@ -82,7 +82,7 @@ router.put("/:id", function (req, res) {
             console.log(err);
             res.send({ message: "Internal Server Error" });
         } else {
-            res.redirect(`/ingredients/${updatedIngredient._id}`);
+            res.redirect(`/ingredients`);
         }
     });
 });
