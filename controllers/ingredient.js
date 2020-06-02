@@ -82,7 +82,15 @@ router.put("/:id", function (req, res) {
             console.log(err);
             res.send({ message: "Internal Server Error" });
         } else {
-            res.redirect(`/ingredients`);
+            db.Recipe.findById(updatedIngredient.recipe, function (err, foundRecipe) {
+                if (err) {
+                    console.log(err);
+                    res.send({ message: "Internal Server Error" });
+                } else {
+                    res.redirect(`/recipes/${foundRecipe._id}`);
+                }
+            })
+
         }
     });
 });
