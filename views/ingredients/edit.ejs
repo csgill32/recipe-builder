@@ -16,15 +16,18 @@
             <li class="nav"><a href="/">Home</a></li>
             <li class="nav"><a href="/recipes">Recipes</a></li>
             <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
-            <li class="nav"><a href="/ingredients">Ingredients</a></li>
-            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li>
+            <!-- <li class="nav"><a href="/ingredients">Ingredients</a></li>
+            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
         </ul>
     </header>
     <main>
         <h2>Edit <%= ingredient.name %> </h2>
+        <form action="/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+        </form>
         <form action="/ingredients/<%= ingredient._id %>?_method=PUT" method="POST">
             <input type="text" name="name" value="<%= ingredient.name %>" />
-            <input type="number" name="quantity" value="<%= ingredient.quantity %>" />
+            <input type="text" name="quantity" value="<%= ingredient.quantity %>" />
             <input type="text" name="measurement" value="<%= ingredient.measurement %>" />
             <input type="submit" value="Edit Ingredient" />
         </form>
