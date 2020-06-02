@@ -44,6 +44,8 @@ app.get("/", function (req, res) {
     res.render("index");
 });
 
+// auth route
+app.use("/", controllers.auth);
 // recipe routes
 app.use("/recipes", controllers.recipe);
 // ingredient routes
