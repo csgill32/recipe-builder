@@ -7,6 +7,7 @@ const MongoStore = require("connect-mongo")(session);
 
 /* Internal Modules */
 const controllers = require("./controllers");
+const authRequired = require("./middleware/authRequired");
 
 /* Instanced Modules */
 const app = express();
@@ -41,15 +42,15 @@ app.use(
 // root routes
 app.get("/", function (req, res) {
     console.log(req.session);
-    res.render("index");
+    res.render("index", { user: req.session.currentUser });
 });
 
 // auth route
 app.use("/", controllers.auth);
 // recipe routes
-app.use("/recipes", controllers.recipe);
+app.use("/recipes", authRequired, controllers.recipe);
 // ingredient routes
-app.use("/ingredients", controllers.ingredient);
+app.use("/ingredients", authrequired, controllers.ingredient);
 
 /* Bind Server to Port */
 app.listen(PORT, function () {
