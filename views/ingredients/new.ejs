@@ -16,10 +16,12 @@
             <li class="nav"><a href="/">Home</a></li>
             <li class="nav"><a href="/recipes">Recipes</a></li>
             <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
+            <li class="nav"><a href="/ingredients">Ingredients</a></li>
+            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li>
         </ul>
     </header>
     <main>
-        <form action="/recipes" method="POST">
+        <form action="/ingredients" method="POST">
             <p>
                 <select name="recipe">
                     <% recipes.forEach(recipe => { %>
