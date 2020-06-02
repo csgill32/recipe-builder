@@ -24,7 +24,7 @@
         <h2>Edit <%= ingredient.name %> </h2>
         <form action="/ingredients/<%= ingredient._id %>?_method=PUT" method="POST">
             <input type="text" name="name" value="<%= ingredient.name %>" />
-            <input type="number" name="quantity" value="<%= ingredient.quantity %>" />
+            <input type="text" name="quantity" value="<%= ingredient.quantity %>" />
             <input type="text" name="measurement" value="<%= ingredient.measurement %>" />
             <input type="submit" value="Edit Ingredient" />
         </form>

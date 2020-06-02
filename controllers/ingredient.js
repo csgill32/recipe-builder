@@ -42,7 +42,7 @@ router.post('/', function (req, res) {
                 } else {
                     foundRecipe.ingredients.push(createdIngredient);
                     foundRecipe.save();
-                    res.redirect("/recipes");
+                    res.redirect(`/recipes/${foundRecipe._id}`);
                 }
             })
         }

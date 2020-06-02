@@ -21,16 +21,21 @@
         </ul>
     </header>
 
-    <main>
-        <h2>List of Recipes</h2>
-        <ul>
-            <% recipes.forEach(recipe => { %>
-            <li>
-                <a href="/recipes/<%=recipe._id%>"><%=recipe.name%></a>
-            </li>
-            <% }); %>
-        </ul>
-    </main>
+    <section class="flex">
+
+        <div class="recipe-list">
+            <h2 class="recipe-title">My Recipes</h2>
+            <ul>
+                <% recipes.forEach(recipe => { %>
+                <li>
+                    <a href="/recipes/<%=recipe._id%>"><%=recipe.name%></a>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+
+    </section>
+
 </body>
 
 </html>
