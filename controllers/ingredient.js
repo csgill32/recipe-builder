@@ -42,7 +42,7 @@ router.post('/', function (req, res) {
                 } else {
                     foundRecipe.ingredients.push(createdIngredient);
                     foundRecipe.save();
-                    res.redirect("/recipes");
+                    res.redirect(`/recipes/${foundRecipe._id}`);
                 }
             })
         }
@@ -82,7 +82,15 @@ router.put("/:id", function (req, res) {
             console.log(err);
             res.send({ message: "Internal Server Error" });
         } else {
-            res.redirect(`/ingredients`);
+            db.Recipe.findById(updatedIngredient.recipe, function (err, foundRecipe) {
+                if (err) {
+                    console.log(err);
+                    res.send({ message: "Internal Server Error" });
+                } else {
+                    res.redirect(`/recipes/${foundRecipe._id}`);
+                }
+            })
+
         }
     });
 });
@@ -94,14 +102,14 @@ router.delete("/:id", function (req, res) {
             console.log(err);
             res.send({ message: "Internal Server Error" });
         } else {
-            db.Recipe.findById(deletedIngredient.recipe, function (error, foundRecipe) {
+            db.Recipe.findById(deletedIngredient.recipe, function (err, foundRecipe) {
                 if (err) {
                     console.log(err);
                     res.send({ message: "Internal Server Error" });
                 } else {
                     foundRecipe.ingredients.remove(deletedIngredient);
                     foundRecipe.save();
-                    res.redirect('/ingredients');
+                    res.redirect(`/recipes/${foundRecipe._id}`);
                 }
             });
         }
