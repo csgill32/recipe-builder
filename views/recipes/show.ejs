@@ -16,6 +16,8 @@
             <li class="nav"><a href="/">Home</a></li>
             <li class="nav"><a href="/recipes">Recipes</a></li>
             <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
+            <li class="nav"><a href="/ingredients">Ingredients</a></li>
+            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li>
         </ul>
     </header>
 
@@ -34,11 +36,12 @@
 
     <section>
         <h2>Ingredients</h2>
-        <a href="/ingredients/new/">Add Ingredient</a>
-
-        <% recipe.ingredients.forEach(ingredient => { %>
-        <a href="/ingredients/<%= ingredient._id %>"><%= ingredient.name %> </a>
-        <% }) %>
+        <a href="/ingredients/new">Add New Ingredient</a>
+        <p>
+            <% recipe.ingredients.forEach(ingredient => { %>
+            <li><a href="/ingredients/<%= ingredient._id %>"><%= ingredient.name %> </a></li>
+            <% }) %>
+        </p>
     </section>
 
 </body>
