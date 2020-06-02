@@ -16,7 +16,7 @@ body {
 li.header {
     color: #847f7a;
     font-size: 60px;
-    font-family: 'Sacramento', cursive;;
+    font-family: 'Sacramento', cursive;
 }
 
 li.nav {
@@ -34,7 +34,7 @@ a:hover {
     color: #CAC8C6;
 }
 
-ul {
+ul.nav-bar {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -46,3 +46,37 @@ ul {
     background-color: #FFE8DF;
 }
 
+.show-page {
+    /* border: 1px dotted blue; */
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    margin-top: 200px;
+    font-family: 'Poiret One', cursive;
+    font-size: 20px;
+}
+
+.recipe-form {
+    border: 3px solid #847f7a;
+    width: auto;
+    height: auto;
+    background: rgba(251, 233, 224, .8);
+    padding: 20px;
+}
+
+.ingredient-list {
+    border: 3px solid #847f7a;
+    width: auto;
+    height: auto;
+    background: rgba(251, 233, 224, .7);
+    padding: 20px
+}
+
+.show-page h2 {
+    font-family: 'Sacramento', cursive;
+    font-size: 45px;
+    margin-bottom: 10px;
+}
