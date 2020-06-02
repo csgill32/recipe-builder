@@ -45,12 +45,13 @@ app.get("/", function (req, res) {
     res.render("index", { user: req.session.currentUser });
 });
 
+
 // auth route
 app.use("/", controllers.auth);
 // recipe routes
 app.use("/recipes", authRequired, controllers.recipe);
 // ingredient routes
-app.use("/ingredients", authrequired, controllers.ingredient);
+app.use("/ingredients", authRequired, controllers.ingredient);
 
 /* Bind Server to Port */
 app.listen(PORT, function () {

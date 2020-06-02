@@ -53,6 +53,25 @@ router.post("/register", async function (req, res) {
       res.send({ message: "Internal Server Error", error: err });
     }
   });
+
+  // logout delete <- delete session
+router.delete("/logout", async function (req, res) {
+    await req.session.destroy();
+    res.redirect("/login");
+  });
+  
+  // profile
+  router.get("/profile", async function (req, res) {
+    try {
+      const foundUser = await db.User.findById(req.session.currentUser.id);
+      const userAuthors = await db.Author.find({
+        user: req.session.currentUser.id,
+      });
+      res.render("auth/profile", { user: foundUser, recipe: userRecipes });
+    } catch (err) {
+      res.send({ message: "Internal Server Error", error: err });
+    }
+  });
   
 
   module.exports = router;
