@@ -26,16 +26,14 @@
         <div class="recipe-form">
             <h2 class="recipe-title"><%= recipe.name %> </h2>
 
-
             <h3>Category: <%= recipe.category %> </h3>
             <p>Directions: <%= recipe.directions %> </p>
-
 
             <div class="edit-delete">
                 <a href="/recipes/<%= recipe._id %>/edit">Edit Recipe</a>
 
                 <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
-                    <input class="delete" type="submit" value="Delete Recipe">
+                    <input class="blank" type="submit" value="Delete Recipe">
                 </form>
             </div>
 
@@ -43,7 +41,7 @@
 
         <div class="ingredient-list">
             <h2>Ingredients</h2>
-            <a href="/ingredients/new">Add Ingredient +</a>
+            <a href="/ingredients/new/<%= recipe._id %>">Add Ingredient +</a>
 
             <p>
 

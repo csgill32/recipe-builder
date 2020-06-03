@@ -15,34 +15,43 @@ router.get('/', function (req, res) {
     });
 });
 
-// new route
-router.get('/new', function (req, res) {
-    db.Recipe.find({}, function (error, allRecipes) {
+// new route ******* this was for when we still had a drop down *******
+//
+// router.get('/new/:id', function (req, res) {
+//     db.Recipe.find({}, function (error, allRecipes) {
+//         if (error) {
+//             console.log(error);
+//             res.send({ message: "Internal server error." });
+//         } else {
+//             const activeRecipe = allRecipes.find(function (recipe) {
+//                 return `${recipe._id}` === req.params.id;
+//             });
+//             const remainingRecipes = allRecipes.filter(function (recipe) {
+//                 return `${recipe._id}` !== req.params.id;
+//             });
+//             const context = { recipes: remainingRecipes, activeRecipe: activeRecipe };
+//             console.log(context);
+//             res.render("ingredients/new", context);
+//         }
+//     });
+// });
+
+router.get('/new/:id', function (req, res) {
+    db.Recipe.findById(req.params.id, function (error, recipe) {
         if (error) {
             console.log(error);
             res.send({ message: "Internal server error." });
         } else {
-            const context = { recipes: allRecipes };
+            const context = { recipe };
+            console.log(context);
             res.render("ingredients/new", context);
         }
     });
 });
 
-// // new route take 2
-// router.get('/new', function (req, res) {
-//     db.Recipe.findById(req.params.id, function (error, foundRecipe) {
-//         if (error) {
-//             console.log(error);
-//             res.send({ message: "Internal server error." });
-//         } else {
-//             const context = { recipes: foundRecipe };
-//             res.render(`/recipes/${foundRecipe._id}`, context);
-//         }
-//     });
-// });
-
 // create route
-router.post('/', function (req, res) {
+router.post('/:id', function (req, res) {
+    req.body.recipe = req.params.id;
     db.Ingredient.create(req.body, function (error, createdIngredient) {
         if (error) {
             console.log(error);

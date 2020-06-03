@@ -110,7 +110,7 @@ ul.nav-bar {
     margin-bottom: 10px;
 }
 
-.delete {
+.blank {
     border: none;
     background: rgba(204, 167, 169, .8);
     color: rgb(255, 250, 247);
@@ -118,8 +118,13 @@ ul.nav-bar {
     font-size: 20px;
 }
 
-.delete:hover {
+.blank:hover {
     color: #CAC8C6;
+}
+
+.form input.blank{
+    background: none;
+    border: none;
 }
 
 div.edit-delete {
@@ -166,7 +171,7 @@ div.form {
 }
 
 input::placeholder {
-    color: rgb(255, 250, 247);
+    color: rgba(255, 250, 247, .5);
 }
 
 textarea {
@@ -174,7 +179,7 @@ textarea {
     font-size: 18px;
     margin: 10px;
     padding: 10px;
-    background: rgba(255, 250, 247, .8);
+    background: rgba(255, 250, 247, .7);
     min-width: 90%;
     min-height: 100px;
 }

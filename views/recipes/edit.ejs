@@ -21,18 +21,19 @@
         </ul>
     </header>
 
-    <main>
-        <h2>Edit <%= recipe.name %> </h2>
-        <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+    <div class="form">
+
+        <form class="new" action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+            <h2>Edit <%= recipe.name %> </h2>
             <input type="text" name="name" value="<%= recipe.name %>">
             <input type="text" name="category" value="<%= recipe.category %>">
-            <!-- <input type="date" name="dateCreated" value="<%= recipe.dateCreated %>"> -->
+            <!-- <input type="date" name="dateCreated" value=" SQUID recipe.dateCreated %>"> -->
             <p>
                 <textarea type="text" name="directions"><%= recipe.directions %></textarea>
             </p>
-            <input type="submit" value="Edit Recipe">
+            <input class="blank" type="submit" value="Edit Recipe">
         </form>
-    </main>
+    </div class="form">
 </body>
 
 </html>
