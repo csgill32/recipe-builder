@@ -48,7 +48,7 @@ router.post("/register", async function (req, res) {
         id: foundUser._id,
         username: foundUser.username,
       };
-      res.redirect("/");
+      res.redirect("/recipes");
     } catch (err) {
       res.send({ message: "Internal Server Error", error: err });
     }
