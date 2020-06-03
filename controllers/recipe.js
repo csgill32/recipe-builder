@@ -2,18 +2,17 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models")
 
-// Index route
-router.get("/", function (req, res) {
-    db.Recipe.find({}, function (error, allRecipes) {
-        if (error) {
+// Index async route
+router.get("/", async function (req, res) {
+    try {
+        const allRecipes = await db.Recipe.find({user: req.session.currentUser.id});
+        const context = { recipes: allRecipes };
+        res.render("recipes/index", context);
+    } catch (error) {
             console.log(error);
             res.send({ message: "Internal server error." });
-        } else {
-            const context = { recipes: allRecipes };
-            res.render("recipes/index", context);
         }
     });
-});
 
 // New route
 router.get("/new", function (req, res) {
@@ -22,7 +21,11 @@ router.get("/new", function (req, res) {
 
 // Create route
 router.post("/", function (req, res) {
-    db.Recipe.create(req.body, function (error, createdRecipe) {
+    const recipe = {
+        name: req.body.name,
+        user: req.session.currentUser.id,
+    };
+    db.Recipe.create(recipe, function (error, createdRecipe) {
         if (error) {
             console.log(error);
             res.send({ message: "Internal server error." });
@@ -34,7 +37,7 @@ router.post("/", function (req, res) {
 
 // Show route
 router.get("/:id", function (req, res) {
-    db.Recipe.findById(req.params.id).populate("ingredients").exec(function (error, foundRecipe) {
+    db.Recipe.findById(req.params.id).populate("ingredients user").exec(function (error, foundRecipe) {
         if (error) {
             console.log(error);
             res.send({ message: "Internal server error." });
