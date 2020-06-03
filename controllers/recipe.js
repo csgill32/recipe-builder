@@ -2,18 +2,17 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models")
 
-// Index route
-router.get("/", function (req, res) {
-    db.Recipe.find({}, function (error, allRecipes) {
-        if (error) {
+// Index async route
+router.get("/", async function (req, res) {
+    try {
+        const allRecipes = await db.Recipe.find({user: req.session.currentUser.id});
+        const context = { recipes: allRecipes };
+        res.render("recipes/index", context);
+    } catch (error) {
             console.log(error);
             res.send({ message: "Internal server error." });
-        } else {
-            const context = { recipes: allRecipes };
-            res.render("recipes/index", context);
         }
     });
-});
 
 // New route
 router.get("/new", function (req, res) {
