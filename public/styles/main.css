@@ -110,7 +110,7 @@ ul.nav-bar {
     margin-bottom: 10px;
 }
 
-.delete {
+.blank {
     border: none;
     background: rgba(204, 167, 169, .8);
     color: rgb(255, 250, 247);
@@ -118,12 +118,74 @@ ul.nav-bar {
     font-size: 20px;
 }
 
-.delete:hover {
+.blank:hover {
     color: #CAC8C6;
+}
+
+.form input.blank{
+    background: none;
+    border: none;
 }
 
 div.edit-delete {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     margin-top: 20px;
+}
+
+div.form {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-top: 200px;
+    font-family: 'Poiret One', cursive;
+    font-size: 20px;
+}
+
+.form h2 {
+    font-family: 'Sacramento', cursive;
+    font-size: 45px;
+    margin-bottom: 10px;
+    color: rgb(255, 250, 247);
+    text-align: center;
+}
+
+.form input {
+    font-family: 'Poiret One', cursive;
+    font-size: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(131, 127, 123, .4);
+    border: 1px solid #847f7a;
+    display: block;
+
+    color: rgb(255, 250, 247);
+}
+
+input::placeholder {
+    color: rgba(255, 250, 247, .5);
+}
+
+textarea {
+    font-family: 'Poiret One', cursive;
+    font-size: 18px;
+    margin: 10px;
+    padding: 10px;
+    background: rgba(255, 250, 247, .7);
+    min-width: 90%;
+    min-height: 100px;
+}
+
+form.new {
+    border: 3px solid #847f7a;
+    background: rgba(204, 167, 169, .8);
+    padding: 20px;
 }

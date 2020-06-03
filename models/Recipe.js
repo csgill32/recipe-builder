@@ -5,10 +5,16 @@ const recipeSchema = new mongoose.Schema({
     category: { type: String },
     dateCreated: { type: Date },
     directions: { type: String },
-    ingredients: [{
+    ingredients: [
+        {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ingredient'
-    }]
+    },
+    ],
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
 });
 
 const Recipe = mongoose.model("Recipe", recipeSchema);

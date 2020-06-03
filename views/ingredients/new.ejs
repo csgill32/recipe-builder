@@ -20,21 +20,18 @@
             <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
         </ul>
     </header>
-    <main>
-        <form action="/ingredients" method="POST">
-            <p>
-                <select name="recipe">
-                    <% recipes.forEach(recipe => { %>
-                    <option value="<%= recipe._id %>"><%= recipe.name %></option>
-                    <% }) %>
-                </select>
-            </p>
+
+    <div class="form">
+
+        <form class="new" action="/ingredients/<%= recipe._id %>" method="POST">
+            <h2>New Ingredient: <%= recipe.name %></h2>
             <input type="text" name="name" placeholder="Ingredient Name" />
             <input type="text" name="quantity" placeholder="Quantity" />
             <input type="text" name="measurement" placeholder="Measurement (cups, tbsp, lbs, oz)" />
-            <input type="submit" value="Add Ingredient" />
+            <input class="blank" type="submit" value="Add Ingredient" />
         </form>
-    </main>
+
+    </div class="form">
 
 </body>
 

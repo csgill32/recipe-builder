@@ -19,6 +19,15 @@
             <!-- <li class="nav"><a href="/ingredients">Ingredients</a></li>
             <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
         </ul>
+        <% if(user){ %>
+            <p><%= user.username %></p>
+            <form action="/logout?_method=DELETE" method="POST">
+              <input type="submit" value="Logout" />
+            </form>
+            <% } else { %>
+            <a href="/login">Login/Register</a>
+            <!--<a href="/register">Register</a>-->
+            <% } %>
     </header>
 
 </body>

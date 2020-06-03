@@ -18,5 +18,6 @@ mongoose.connect(connectionString, {
 
 module.exports = {
     Recipe: require("./Recipe"),
-    Ingredient: require("./Ingredient")
+    Ingredient: require("./Ingredient"),
+    User: require("./User")
 };
