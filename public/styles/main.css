@@ -149,7 +149,7 @@ div.form {
     text-align: center;
 }
 
-input {
+.form input {
     font-family: 'Poiret One', cursive;
     font-size: 20px;
     text-align: center;
@@ -179,7 +179,7 @@ textarea {
     min-height: 100px;
 }
 
-form {
+form.new {
     border: 3px solid #847f7a;
     background: rgba(204, 167, 169, .8);
     padding: 20px;
