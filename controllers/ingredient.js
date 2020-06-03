@@ -28,6 +28,19 @@ router.get('/new', function (req, res) {
     });
 });
 
+// // new route take 2
+// router.get('/new', function (req, res) {
+//     db.Recipe.findById(req.params.id, function (error, foundRecipe) {
+//         if (error) {
+//             console.log(error);
+//             res.send({ message: "Internal server error." });
+//         } else {
+//             const context = { recipes: foundRecipe };
+//             res.render(`/recipes/${foundRecipe._id}`, context);
+//         }
+//     });
+// });
+
 // create route
 router.post('/', function (req, res) {
     db.Ingredient.create(req.body, function (error, createdIngredient) {
