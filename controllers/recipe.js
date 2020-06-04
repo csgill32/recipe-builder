@@ -5,14 +5,14 @@ const db = require("../models")
 // Index async route
 router.get("/", async function (req, res) {
     try {
-        const allRecipes = await db.Recipe.find({user: req.session.currentUser.id});
+        const allRecipes = await db.Recipe.find({ user: req.session.currentUser.id });
         const context = { recipes: allRecipes };
         res.render("recipes/index", context);
     } catch (error) {
-            console.log(error);
-            res.send({ message: "Internal server error." });
-        }
-    });
+        console.log(error);
+        res.send({ message: "Internal server error." });
+    }
+});
 
 // New route
 router.get("/new", function (req, res) {
@@ -31,6 +31,26 @@ router.post("/", function (req, res) {
             res.send({ message: "Internal server error." });
         } else {
             res.redirect("/recipes");
+        }
+    });
+});
+
+// Search Route
+router.get('/search', function (req, res) {
+    db.Recipe.find({ name: { $regex: req.query.name, $options: "i" } }, function (error, foundRecipes) {
+        if (error) {
+            console.log(error);
+            res.send({ message: "Internal server error." });
+        } else {
+            db.Ingredient.find({ name: { $regex: req.query.name, $options: "i" } }).populate("recipe").exec(function (error, foundIngredients) {
+                console.log(foundIngredients);
+                for (let i = 0; i < foundIngredients.length; i++) {
+                    foundRecipes.push(foundIngredients[i].recipe);
+                }
+                const context = { recipes: foundRecipes }
+                res.render("recipes/search", context);
+            })
+
         }
     });
 });

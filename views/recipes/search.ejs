@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
-    <title>Recipes Index</title>
+    <title>New Recipe Page</title>
 </head>
 
 <body>
@@ -19,19 +19,12 @@
             <!-- <li class="nav"><a href="/ingredients">Ingredients</a></li>
             <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
         </ul>
-        <form class="search" action="/recipes/search" method="GET">
-            <div>
-                <input type="search" id="recipeSearch" name="name">
-                <button>Search Recipes</button>
-            </div>
-        </form>
     </header>
 
     <section class="flex">
-
         <div class="recipe-list">
-            <h2 class="recipe-title">My Recipes</h2>
-            <a href="/recipes/new">Add New Recipe +</a>
+            <h2 class="recipe-title">Search Results</h2>
+
             <ul>
                 <% recipes.forEach(recipe => { %>
                 <li>
@@ -39,9 +32,10 @@
                 </li>
                 <% }); %>
             </ul>
-        </div>
 
+        </div>
     </section>
+
 
 </body>
 
