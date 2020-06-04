@@ -20,7 +20,7 @@ li.header {
 }
 
 li.nav {
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Poiret One', cursive;
     font-weight: bold;
     
@@ -45,6 +45,40 @@ ul.nav-bar {
     height: auto;
     list-style-type: none;
     background: rgba(204, 167, 169, .8);
+}
+
+.search-bar {
+    background-color: rgba(221, 196, 196, .5);
+    border: 1px solid #fffaf7;
+    font-size: 18px;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    padding: 5px;
+    color: #847f7a;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    color: rgb(255, 250, 247);
+}
+
+.search-button:hover {
+    color: #CAC8C6;
+}
+
+.log {
+    background: none;
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    color: rgb(255, 250, 247);
+}
+
+.log:hover {
+    color: #CAC8C6;
 }
 
 .flex {
