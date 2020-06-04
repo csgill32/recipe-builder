@@ -6,7 +6,7 @@ const db = require("../models")
 router.get("/", async function (req, res) {
     try {
         const allRecipes = await db.Recipe.find({user: req.session.currentUser.id});
-        const context = {recipes: allRecipes};
+        const context = {recipes: allRecipes, user: req.session.currentUser};
         res.render("recipes/index", context);
     } catch (error) {
         console.log(error);
