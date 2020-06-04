@@ -42,7 +42,7 @@ router.get('/new/:id', function (req, res) {
             console.log(error);
             res.send({ message: "Internal server error." });
         } else {
-            const context = { recipe };
+            const context = {recipe: allRecipes};
             console.log(context);
             res.render("ingredients/new", context);
         }

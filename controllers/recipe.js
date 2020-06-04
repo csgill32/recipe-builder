@@ -21,11 +21,11 @@ router.get("/new", function (req, res) {
 
 // Create route
 router.post("/", function (req, res) {
-    const recipe = {
-        name: req.body.name,
-        user: req.session.currentUser.id,
-    };
-    db.Recipe.create(recipe, function (error, createdRecipe) {
+    // const recipe = {
+    //     name: req.body.name,
+    //     user: req.session.currentUser.id
+    // };
+    db.Recipe.create(req.body, function (error, createdRecipe) {
         if (error) {
             console.log(error);
             res.send({ message: "Internal server error." });
@@ -84,7 +84,7 @@ router.delete("/:id", function (req, res) {
                 {
                     recipe: deletedRecipe._id
                 }
-                , function (error, removedIngredients) {
+                , function (error, removedIngredient) {
                     if (error) {
                         console.log(error);
                         res.send({ message: "Internal server error." });
