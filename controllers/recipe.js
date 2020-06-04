@@ -5,13 +5,8 @@ const db = require("../models")
 // Index async route
 router.get("/", async function (req, res) {
     try {
-<<<<<<< HEAD
         const allRecipes = await db.Recipe.find({user: req.session.currentUser.id});
         const context = {recipes: allRecipes};
-=======
-        const allRecipes = await db.Recipe.find({ user: req.session.currentUser.id });
-        const context = { recipes: allRecipes };
->>>>>>> submaster
         res.render("recipes/index", context);
     } catch (error) {
         console.log(error);
@@ -42,30 +37,8 @@ router.post("/", function(req, res) {
     });
 });
 
-<<<<<<< HEAD
 
 
-=======
-// Search Route
-router.get('/search', function (req, res) {
-    db.Recipe.find({ name: { $regex: req.query.name, $options: "i" } }, function (error, foundRecipes) {
-        if (error) {
-            console.log(error);
-            res.send({ message: "Internal server error." });
-        } else {
-            db.Ingredient.find({ name: { $regex: req.query.name, $options: "i" } }).populate("recipe").exec(function (error, foundIngredients) {
-                console.log(foundIngredients);
-                for (let i = 0; i < foundIngredients.length; i++) {
-                    foundRecipes.push(foundIngredients[i].recipe);
-                }
-                const context = { recipes: foundRecipes }
-                res.render("recipes/search", context);
-            })
-
-        }
-    });
-});
->>>>>>> submaster
 
 // Show route
 router.get("/:id", function (req, res) {

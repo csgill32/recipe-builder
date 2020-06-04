@@ -6,15 +6,9 @@ const recipeSchema = new mongoose.Schema({
     directions: { type: String },
     ingredients: [
         {
-<<<<<<< HEAD
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ingredient',
     },
-=======
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Ingredient'
-        },
->>>>>>> submaster
     ],
     user: {
         type: mongoose.Schema.Types.ObjectId,
