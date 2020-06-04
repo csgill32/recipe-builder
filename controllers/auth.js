@@ -7,32 +7,33 @@ const db = require("../models");
 // root route /
 
 // register form
-router.get("/register", function(req, res) {
-    res.render("auth/register");
+router.get("/register", function (req, res) {
+  res.render("auth/register");
 });
 
 // register post
 router.post("/register", async function (req, res) {
-    try {
-      const foundUser = await db.User.findOne({ email: req.body.email });
-      if (foundUser) {
-        return res.send({ message: "Account is already registered" });
-      }
-      const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(req.body.password, salt);
-      req.body.password = hash;
-      const newUser = await db.User.create(req.body);
-      res.redirect("/login");
-    } catch (err) {
-      res.send({ message: "Internal Server Error", error: err });
+  try {
+    const foundUser = await db.User.findOne({ email: req.body.email });
+    if (foundUser) {
+      return res.send({ message: "Account is already registered" });
     }
-  });
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(req.body.password, salt);
+    req.body.password = hash;
+    const newUser = await db.User.create(req.body);
+    res.redirect("/login");
+  } catch (err) {
+    res.send({ message: "Internal Server Error", error: err });
+  }
+});
 
-  // login form
-  router.get("/login", function (req, res) {
-    res.render("auth/login");
-  });
+// login form
+router.get("/login", function (req, res) {
+  res.render("auth/login");
+});
 
+<<<<<<< HEAD
   // login post --> authentication
   router.post("/login", async function (req, res) {
     try {
@@ -51,11 +52,32 @@ router.post("/register", async function (req, res) {
       res.redirect("/recipes");
     } catch (err) {
       res.send({ message: "Internal Server Error", error: err });
+=======
+// login post --> authentication
+router.post("/login", async function (req, res) {
+  try {
+    const foundUser = await db.User.findOne({ email: req.body.email });
+    if (!foundUser) {
+      return res.send({ message: "Password or Email incorrect." });
+>>>>>>> submaster
     }
-  });
+    const match = await bcrypt.compare(req.body.password, foundUser.password);
+    if (!match) {
+      return res.send({ message: "Password or Email incorrect." });
+    }
+    req.session.currentUser = {
+      id: foundUser._id,
+      username: foundUser.username,
+    };
+    res.redirect("/");
+  } catch (err) {
+    res.send({ message: "Internal Server Error", error: err });
+  }
+});
 
-  // logout delete <- delete session
+// logout delete <- delete session
 router.delete("/logout", async function (req, res) {
+<<<<<<< HEAD
     await req.session.destroy();
     res.redirect("/login");
   });
@@ -73,5 +95,24 @@ router.delete("/logout", async function (req, res) {
     }
   });
   
+=======
+  await req.session.destroy();
+  res.redirect("/login");
+});
 
-  module.exports = router;
+// profile
+router.get("/profile", async function (req, res) {
+  try {
+    const foundUser = await db.User.findById(req.session.currentUser.id);
+    const userAuthors = await db.Author.find({
+      user: req.session.currentUser.id,
+    });
+    res.render("auth/profile", { user: foundUser, recipe: userRecipes });
+  } catch (err) {
+    res.send({ message: "Internal Server Error", error: err });
+  }
+});
+
+>>>>>>> submaster
+
+module.exports = router;
