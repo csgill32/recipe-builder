@@ -22,24 +22,13 @@
             <li class="nav">
                 <form class="search" action="/recipes/search" method="GET">
                     <div>
-                        <input class="search-bar" type="search" id="recipeSearch" name="name"
+                        <input class="pink-input" type="search" id="recipeSearch" name="name"
                             placeholder="Search Recipes">
                         <button class="search-button">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </form>
-            </li>
-            <!-- NOT WORKING!!!!!!!! -->
-            <li class="nav">
-                <% if(user){ %>
-                <form action="/logout?_method=DELETE" method="POST">
-                    <input class="log" type="submit" value="Logout: <%= user.username %>" />
-                </form>
-                <% } else { %>
-                <a href="/login">Login/Register</a>
-                <!--<a href="/register">Register</a>-->
-                <% } %>
             </li>
 
         </ul>

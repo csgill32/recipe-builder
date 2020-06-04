@@ -26,9 +26,10 @@
 
         <form class="new" action="/ingredients/<%= ingredient._id %>?_method=PUT" method="POST">
             <h2>Edit <%= ingredient.name %> </h2>
-            <input type="text" name="name" value="<%= ingredient.name %>" />
-            <input type="text" name="quantity" value="<%= ingredient.quantity %>" />
-            <input type="text" name="measurement" value="<%= ingredient.measurement %>" />
+            <input type="text" name="name" value="<%= ingredient.name %>" placeholder="Ingredient Name" />
+            <input type="text" name="quantity" value="<%= ingredient.quantity %>" placeholder="Quantity" />
+            <input type="text" name="measurement" value="<%= ingredient.measurement %>"
+                placeholder="Measurement (cups, tbsp, lbs, oz)" />
 
             <div class="edit-delete">
                 <input class="blank" type="submit" value="Edit Ingredient" />
