@@ -44,6 +44,25 @@
 
     </header>
 
+    <section class="flex">
+        <div class="recipe-list">
+            <h2 class="recipe-title">Welcome Back! Already have an account?</h2>
+            <form action="/login" method="POST">
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <input type="submit" value="Login" />
+            </form>
+        </div>
+        <div class="recipe-list">
+            <h2 class="recipe-title">Register to save and view your recipes!</h2>
+            <form action="/register" method="POST">
+                <input type="text" name="username" placeholder="Username" required />
+                <input type="text" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <input type="submit" value="Create Profile" />
+            </form>
+        </div>
+    </section>
 </body>
 
 </html>
