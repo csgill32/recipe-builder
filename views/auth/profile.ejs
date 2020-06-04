@@ -12,7 +12,7 @@
         <ul>
           <% recipes.forEach(recipe => { %>
           <li>
-            <a href="/authors/<%= recipe._id %>"><%= recipe.name %></a>
+            <a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a>
           </li>
           <% }); %>
         </ul>
