@@ -34,44 +34,85 @@ router.get("/login", function (req, res) {
 });
 
 // login post --> authentication
-router.post("/login", async function (req, res) {
+// router.post("/login", async function (req, res) {
+//     try {
+//       const foundUser = await db.User.findOne({ email: req.body.email });
+//       if (!foundUser) {
+//         return res.send({ message: "Password or Email incorrect." });
+//       }
+//       const match = await bcrypt.compare(req.body.password, foundUser.password);
+//       if (!match) {
+//         return res.send({ message: "Password or Email incorrect." });
+//       }
+//       req.session.currentUser = {
+//         id: foundUser._id,
+//         username: foundUser.username,
+//       };
+//       res.redirect("/recipes");
+//     } catch (err) {
+//       res.send({ message: "Internal Server Error", error: err });
+//     }
+//     const match = await bcrypt.compare(req.body.password, foundUser.password);
+//     if (!match) {
+//       return res.send({ message: "Password or Email incorrect." });
+//     }
+//     req.session.currentUser = {
+//       id: foundUser._id,
+//       username: foundUser.username,
+//     };
+//     res.redirect("/");
+//   } catch (err) {
+//     res.send({ message: "Internal Server Error", error: err });
+//   }
+// });
+
+router.post("/login", async function(req, res) {
   try {
-    const foundUser = await db.User.findOne({ email: req.body.email });
+    const foundUser = await db.User.findOne({email: req.body.email});
     if (!foundUser) {
-      return res.send({ message: "Password or Email incorrect." });
+      return res.send({message: "Password or Email incorrect."});
     }
     const match = await bcrypt.compare(req.body.password, foundUser.password);
     if (!match) {
-      return res.send({ message: "Password or Email incorrect." });
+      return res.send({message: "Password or Email inccorect."});
     }
     req.session.currentUser = {
       id: foundUser._id,
-      username: foundUser.username,
+      username: foundUser.username
     };
-    res.redirect("/");
-  } catch (err) {
-    res.send({ message: "Internal Server Error", error: err });
+    res.redirect("/recipes");
+  } catch (error) {
+    res.send({message: "Internal Server Error", error: err});
   }
+  const match = await bcrypt.compare(req.body.password, foundUser.password);
+  if (!match) {
+    return res.send({message: "Password or Email incorrect."});
+  }
+  req.session.currentUser = {
+    id: foundUser._id,
+    username: foundUser.username
+  };
+  res.redirect("/");
 });
 
 // logout delete <- delete session
 router.delete("/logout", async function (req, res) {
-  await req.session.destroy();
-  res.redirect("/login");
-});
-
-// profile
-router.get("/profile", async function (req, res) {
-  try {
-    const foundUser = await db.User.findById(req.session.currentUser.id);
-    const userAuthors = await db.Author.find({
-      user: req.session.currentUser.id,
-    });
-    res.render("auth/profile", { user: foundUser, recipe: userRecipes });
-  } catch (err) {
-    res.send({ message: "Internal Server Error", error: err });
-  }
-});
-
+    await req.session.destroy();
+    res.redirect("/login");
+  });
+  
+  // profile
+  router.get("/profile", async function (req, res) {
+    try {
+      const foundUser = await db.User.findById(req.session.currentUser.id);
+      const userRecipes = await db.Recipe.find({
+        user: req.session.currentUser.id,
+      });
+      res.render("auth/profile", { user: foundUser, recipes: userRecipes });
+    } catch (err) {
+      res.send({ message: "Internal Server Error", error: err });
+    }
+  });
+  
 
 module.exports = router;
