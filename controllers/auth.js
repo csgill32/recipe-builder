@@ -80,19 +80,10 @@ router.post("/login", async function(req, res) {
       id: foundUser._id,
       username: foundUser.username
     };
-    res.redirect("/recipes");
-  } catch (error) {
-    res.send({message: "Internal Server Error", error: err});
-  }
-  const match = await bcrypt.compare(req.body.password, foundUser.password);
-  if (!match) {
-    return res.send({message: "Password or Email incorrect."});
-  }
-  req.session.currentUser = {
-    id: foundUser._id,
-    username: foundUser.username
-  };
-  res.redirect("/");
+      res.redirect("/");
+    } catch (error) {
+      res.send({message: "Internal Server Error", error: err});
+    }
 });
 
 // logout delete <- delete session
