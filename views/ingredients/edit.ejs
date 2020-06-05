@@ -14,11 +14,22 @@
     <header>
         <ul class="nav-bar">
             <li class="header">Recipes</li>
-            <li class="nav"><a href="/">Home</a></li>
-            <li class="nav"><a href="/recipes">Recipes</a></li>
+            <!-- <li class="nav"><a href="/">Home</a></li> -->
+            <li class="nav"><a href="/recipes">My Recipes</a></li>
             <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
             <!-- <li class="nav"><a href="/ingredients">Ingredients</a></li>
             <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
+            <li class="nav">
+                <form class="search" action="/recipes/search" method="GET">
+                    <div>
+                        <input class="pink-input" type="search" id="recipeSearch" name="name"
+                            placeholder="Search Recipes">
+                        <button class="search-button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </li>
         </ul>
     </header>
 
@@ -26,9 +37,10 @@
 
         <form class="new" action="/ingredients/<%= ingredient._id %>?_method=PUT" method="POST">
             <h2>Edit <%= ingredient.name %> </h2>
-            <input type="text" name="name" value="<%= ingredient.name %>" />
-            <input type="text" name="quantity" value="<%= ingredient.quantity %>" />
-            <input type="text" name="measurement" value="<%= ingredient.measurement %>" />
+            <input type="text" name="name" value="<%= ingredient.name %>" placeholder="Ingredient Name" />
+            <input type="text" name="quantity" value="<%= ingredient.quantity %>" placeholder="Quantity" />
+            <input type="text" name="measurement" value="<%= ingredient.measurement %>"
+                placeholder="Measurement (cups, tbsp, lbs, oz)" />
 
             <div class="edit-delete">
                 <input class="blank" type="submit" value="Edit Ingredient" />
