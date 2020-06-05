@@ -98,7 +98,7 @@ router.post("/login", async function (req, res) {
 // logout delete <- delete session
 router.delete("/logout", async function (req, res) {
   await req.session.destroy();
-  res.redirect("/");
+  res.redirect("/login");
 });
 
 // profile
