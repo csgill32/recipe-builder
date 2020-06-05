@@ -14,10 +14,12 @@ router.get("/", async function (req, res) {
     }
 });
 
+
 // New route
 router.get("/new", function (req, res) {
     res.render("recipes/new");
 });
+
 
 // Create route
 router.post("/", function (req, res) {
@@ -38,8 +40,6 @@ router.post("/", function (req, res) {
 });
 
 
-
-
 // Show route
 router.get("/:id", function (req, res) {
     db.Recipe.findById(req.params.id).populate("ingredients user").exec(function (error, foundRecipe) {
@@ -53,6 +53,7 @@ router.get("/:id", function (req, res) {
     });
 });
 
+
 // Edit route
 router.get("/:id/edit", function (req, res) {
     db.Recipe.findById(req.params.id, function (error, foundRecipe) {
@@ -60,11 +61,12 @@ router.get("/:id/edit", function (req, res) {
             console.log(error);
             res.send({ message: "Internal server error." });
         } else {
-            const context = { recipe: foundRecipe };
+            const context = {recipe: foundRecipe};
             res.render("recipes/edit", context);
         }
     });
 });
+
 
 // Update route
 router.put("/:id", function (req, res) {
@@ -77,6 +79,7 @@ router.put("/:id", function (req, res) {
         }
     });
 });
+
 
 // Delete route
 router.delete("/:id", async function (req, res) {
