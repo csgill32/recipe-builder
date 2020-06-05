@@ -66,15 +66,15 @@ router.get("/login", function (req, res) {
 //   }
 // });
 
-router.post("/login", async function(req, res) {
+router.post("/login", async function (req, res) {
   try {
-    const foundUser = await db.User.findOne({email: req.body.email});
+    const foundUser = await db.User.findOne({ email: req.body.email });
     if (!foundUser) {
-      return res.send({message: "Password or Email incorrect."});
+      return res.send({ message: "Password or Email incorrect." });
     }
     const match = await bcrypt.compare(req.body.password, foundUser.password);
     if (!match) {
-      return res.send({message: "Password or Email inccorect."});
+      return res.send({ message: "Password or Email inccorect." });
     }
     req.session.currentUser = {
       id: foundUser._id,
@@ -82,11 +82,11 @@ router.post("/login", async function(req, res) {
     };
     res.redirect("/recipes");
   } catch (error) {
-    res.send({message: "Internal Server Error", error: err});
+    res.send({ message: "Internal Server Error", error: err });
   }
   const match = await bcrypt.compare(req.body.password, foundUser.password);
   if (!match) {
-    return res.send({message: "Password or Email incorrect."});
+    return res.send({ message: "Password or Email incorrect." });
   }
   req.session.currentUser = {
     id: foundUser._id,
@@ -97,22 +97,22 @@ router.post("/login", async function(req, res) {
 
 // logout delete <- delete session
 router.delete("/logout", async function (req, res) {
-    await req.session.destroy();
-    res.redirect("/login");
-  });
-  
-  // profile
-  router.get("/profile", async function (req, res) {
-    try {
-      const foundUser = await db.User.findById(req.session.currentUser.id);
-      const userRecipes = await db.Recipe.find({
-        user: req.session.currentUser.id,
-      });
-      res.render("auth/profile", { user: foundUser, recipes: userRecipes });
-    } catch (err) {
-      res.send({ message: "Internal Server Error", error: err });
-    }
-  });
-  
+  await req.session.destroy();
+  res.redirect("/login");
+});
+
+// profile
+router.get("/profile", async function (req, res) {
+  try {
+    const foundUser = await db.User.findById(req.session.currentUser.id);
+    const userRecipes = await db.Recipe.find({
+      user: req.session.currentUser.id,
+    });
+    res.render("auth/profile", { user: foundUser, recipes: userRecipes });
+  } catch (err) {
+    res.send({ message: "Internal Server Error", error: err });
+  }
+});
+
 
 module.exports = router;

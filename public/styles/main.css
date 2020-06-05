@@ -47,7 +47,7 @@ ul.nav-bar {
     background: rgba(204, 167, 169, .8);
 }
 
-.search-bar {
+.pink-input {
     background-color: rgba(221, 196, 196, .5);
     border: 1px solid #fffaf7;
     font-size: 18px;
@@ -94,6 +94,17 @@ ul.nav-bar {
     font-size: 20px;
 }
 
+.login-register {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: space-evenly;
+    align-content: center;
+    font-family: 'Poiret One' cursive;
+    text-align: center;
+    color: rgb(255, 250, 247);
+}
+
 .recipe-list {
     border: 3px solid #847f7a;
     width: 30%;
@@ -128,6 +139,13 @@ ul.nav-bar {
     text-align: center;
 }
 
+.form h1 {
+    font-family: 'Poiret One', cursive;
+    font-size: 30px;
+    color: rgb(255, 250, 247);
+    margin-bottom: 20px;
+}
+
 .flex h2 {
     font-family: 'Sacramento', cursive;
     font-size: 45px;
@@ -146,7 +164,7 @@ ul.nav-bar {
 
 .blank {
     border: none;
-    background: rgba(204, 167, 169, .8);
+    background: none;
     color: rgb(255, 250, 247);
     font-family: 'Poiret One', cursive;
     font-size: 20px;
@@ -197,15 +215,16 @@ div.form {
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px;
-    background: rgba(131, 127, 123, .4);
-    border: 1px solid #847f7a;
+    background-color: rgba(221, 196, 196, .5);
+    border: 1px solid #fffaf7;
+    color: #fffaf7;
     display: block;
 
-    color: rgb(255, 250, 247);
 }
 
 input::placeholder {
-    color: rgba(255, 250, 247, .5);
+    color: rgba(255, 250, 247, .7);
+    font-style: italic;
 }
 
 textarea {

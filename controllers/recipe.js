@@ -5,8 +5,8 @@ const db = require("../models")
 // Index async route
 router.get("/", async function (req, res) {
     try {
-        const allRecipes = await db.Recipe.find({user: req.session.currentUser.id});
-        const context = {recipes: allRecipes, user: req.session.currentUser};
+        const allRecipes = await db.Recipe.find({ user: req.session.currentUser.id });
+        const context = { recipes: allRecipes, user: req.session.currentUser };
         res.render("recipes/index", context);
     } catch (error) {
         console.log(error);
@@ -20,17 +20,17 @@ router.get("/new", function (req, res) {
 });
 
 // Create route
-router.post("/", function(req, res) {
+router.post("/", function (req, res) {
     const recipe = {
         name: req.body.name,
         user: req.session.currentUser.id,
         category: req.body.category,
         directions: req.body.directions
     };
-    db.Recipe.create(recipe, function(error, createdRecipe) {
+    db.Recipe.create(recipe, function (error, createdRecipe) {
         if (error) {
             console.log(error);
-            res.send({message: "Internal Server Error"});
+            res.send({ message: "Internal Server Error" });
         } else {
             res.redirect("/recipes");
         }
@@ -47,7 +47,7 @@ router.get("/:id", function (req, res) {
             console.log(error);
             res.send({ message: "Internal server error." });
         } else {
-            const context = {recipe: foundRecipe};
+            const context = { recipe: foundRecipe };
             res.render("recipes/show", context);
         }
     });
@@ -88,10 +88,9 @@ router.delete("/:id", async function (req, res) {
         res.redirect("/recipes");
     } catch (error) {
         console.log(error);
-        res.send({message: "Internal Server Error"});
+        res.send({ message: "Internal Server Error" });
     }
 });
-    
-   
+
 
 module.exports = router;
