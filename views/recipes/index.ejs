@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <title>Recipes Index</title>
 </head>
 
 <body>
     <header>
         <ul class="nav-bar">
-            <li class="header">Recipes</li>
+            <li class="header">Recipe Builder</li>
             <!-- <li class="nav"><a href="/">Home</a></li> -->
             <li class="nav"><a href="/recipes">My Recipes</a></li>
             <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
+
             <!-- <li class="nav"><a href="/ingredients">Ingredients</a></li>
             <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
             <li class="nav">
@@ -25,7 +26,7 @@
                         <input class="pink-input" type="search" id="recipeSearch" name="name"
                             placeholder="Search Recipes">
                         <button class="search-button">
-                            <i class="fa fa-search"></i>
+                            <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </form>
@@ -48,7 +49,7 @@
 
         <div class="recipe-list">
             <h2 class="recipe-title">My Recipes</h2>
-            <a href="/recipes/new">Add New Recipe +</a>
+            <a href="/recipes/new">+ Add New Recipe +<br></a><br>
             <ul>
                 <% recipes.forEach(recipe => { %>
                 <li>

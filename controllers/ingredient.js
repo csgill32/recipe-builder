@@ -36,13 +36,14 @@ router.get('/', function (req, res) {
 //     });
 // });
 
+// new route
 router.get('/new/:id', function (req, res) {
     db.Recipe.findById(req.params.id, function (error, recipe) {
         if (error) {
             console.log(error);
             res.send({ message: "Internal server error." });
         } else {
-            const context = {recipe};
+            const context = { recipe, user: req.session.currentUser };
             console.log(context);
             res.render("ingredients/new", context);
         }
@@ -91,7 +92,7 @@ router.get("/:id/edit", function (req, res) {
             console.log(err);
             res.send({ message: "Internal Server Error" });
         } else {
-            const context = { ingredient: foundIngredient }
+            const context = { ingredient: foundIngredient, user: req.session.currentUser }
             res.render("ingredients/edit", context);
         }
     });

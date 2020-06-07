@@ -17,7 +17,8 @@ router.get("/", async function (req, res) {
 
 // New route
 router.get("/new", function (req, res) {
-    res.render("recipes/new");
+    const context = { user: req.session.currentUser };
+    res.render("recipes/new", context);
 });
 
 
@@ -39,6 +40,25 @@ router.post("/", function (req, res) {
     });
 });
 
+// Search Route
+router.get('/search', function (req, res) {
+    db.Recipe.find({ name: { $regex: req.query.name, $options: "i" } }, function (error, foundRecipes) {
+        if (error) {
+            console.log(error);
+            res.send({ message: "Internal server error." });
+        } else {
+            db.Ingredient.find({ name: { $regex: req.query.name, $options: "i" } }).populate("recipe").exec(function (error, foundIngredients) {
+                console.log(foundIngredients);
+                for (let i = 0; i < foundIngredients.length; i++) {
+                    foundRecipes.push(foundIngredients[i].recipe);
+                }
+                const context = { recipes: foundRecipes, user: req.session.currentUser }
+                res.render("recipes/search", context);
+            })
+
+        }
+    });
+});
 
 // Show route
 router.get("/:id", function (req, res) {
@@ -47,7 +67,7 @@ router.get("/:id", function (req, res) {
             console.log(error);
             res.send({ message: "Internal server error." });
         } else {
-            const context = { recipe: foundRecipe };
+            const context = { recipe: foundRecipe, user: req.session.currentUser };
             res.render("recipes/show", context);
         }
     });
@@ -61,7 +81,7 @@ router.get("/:id/edit", function (req, res) {
             console.log(error);
             res.send({ message: "Internal server error." });
         } else {
-            const context = {recipe: foundRecipe};
+            const context = { recipe: foundRecipe, user: req.session.currentUser };
             res.render("recipes/edit", context);
         }
     });
