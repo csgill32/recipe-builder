@@ -6,43 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <title>Main Page</title>
 </head>
 
 <body>
     <header>
         <ul class="nav-bar">
-            <li class="header">Recipes</li>
-            <!-- <li class="nav"><a href="/">Home</a></li> -->
-            <li class="nav"><a href="/recipes">My Recipes</a></li>
-            <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
-            <!-- <li class="nav"><a href="/ingredients">Ingredients</a></li>
-            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
-            <li class="nav">
-                <form class="search" action="/recipes/search" method="GET">
-                    <div>
-                        <input class="pink-input" type="search" id="recipeSearch" name="name"
-                            placeholder="Search Recipes">
-                        <button class="search-button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </form>
-            </li>
-            <li class="nav">
-                <% if(user){ %>
-                <form action="/logout?_method=DELETE" method="POST">
-                    <input class="log" type="submit" value="Logout: <%= user.username %>" />
-                </form>
-                <% } else { %>
-                <a href="/login">Login/Register</a>
-                <!--<a href="/register">Register</a>-->
-                <% } %>
+            <li class="header">Recipe Builder</li>
+            <li class="about">Easily create and store all of your favorite recipes in one place. Start building today!
             </li>
         </ul>
-
     </header>
+
     <section class="login-register">
 
         <div class="form">
@@ -50,7 +26,7 @@
                 <h1>Already have an account?</h1>
                 <p>E-mail Address: <input type="email" name="email" placeholder="Email" required /> </p>
                 <p>Password: <input type="password" name="password" placeholder="Password" required /> </p>
-                <input class="log" type="submit" value="Login" />
+                <input class="blank" type="submit" value="Login" />
             </form>
         </div>
 
@@ -61,7 +37,7 @@
                 </p>
                 <p>E-mail: <input type="text" name="email" placeholder="Email" required /></p>
                 <p>Password: <input type="password" name="password" placeholder="Password" required /></p>
-                <input class="log" type="submit" value="Create Profile" />
+                <input class="blank" type="submit" value="Create Profile" />
             </form>
         </div>
 
