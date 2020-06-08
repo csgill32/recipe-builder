@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <title>New Recipe Page</title>
+</head>
+
+<body>
+    <header>
+        <ul class="nav-bar">
+            <li class="header">Recipe Builder</li>
+            <!-- <li class="nav"><a href="/">Home</a></li> -->
+            <li class="nav"><a href="/recipes">My Recipes</a></li>
+            <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
+            <!-- <li class="nav"><a href="/ingredients">Ingredients</a></li>
+            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
+            <li class="nav">
+                <form class="search" action="/recipes/search" method="GET">
+                    <div>
+                        <input class="pink-input" type="search" id="recipeSearch" name="name"
+                            placeholder="Search Recipes">
+                        <button class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </li>
+            <li class="nav">
+                <form action="/logout?_method=DELETE" method="POST">
+                    <input class="log" type="submit" value="Logout: <%= user.username %>" />
+                </form>
+            </li>
+        </ul>
+    </header>
+
+    <div class="form">
+
+        <form class="new" action="/recipes" method="POST">
+            <h2>Add New Recipe</h2>
+            <input type="text" name="name" placeholder="Recipe Name">
+            <input type="text" name="category" placeholder="Category">
+            <!-- <input type="date" name="dateCreated"> -->
+            <p>
+                <textarea type="text" name="directions" placeholder="Directions"></textarea>
+            </p>
+            <input class="blank" type="submit" value="Create Recipe">
+        </form>
+
+    </div>
+
+</body>
+
+</html>

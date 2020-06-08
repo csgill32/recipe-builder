@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <title>Ingredient Show Page</title>
+</head>
+
+<body>
+    <header>
+        <ul class="nav-bar">
+            <li class="header">Recipe Builder</li>
+            <!-- <li class="nav"><a href="/">Home</a></li> -->
+            <li class="nav"><a href="/recipes">My Recipes</a></li>
+            <li class="nav"><a href="/recipes/new">Add New Recipe</a></li>
+            <!-- <li class="nav"><a href="/ingredients">Ingredients</a></li>
+            <li class="nav"><a href="/ingredients/new">Add New Ingredient</a></li> -->
+            <li class="nav">
+                <form class="search" action="/recipes/search" method="GET">
+                    <div>
+                        <input class="pink-input" type="search" id="recipeSearch" name="name"
+                            placeholder="Search Recipes">
+                        <button class="search-button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+        <h2>Ingredient Info</h2>
+        <a href="/ingredients/<%= ingredient._id %>/edit">Edit</a>
+        <ul>
+            <li>Name: <%= ingredient.name %> </li>
+            <li>Quantity: <%= ingredient.quantity %> </li>
+            <li>Measurement: <%= ingredient.measurement %> </li>
+        </ul>
+
+        <form action="/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST">
+            <input class="blank" type="submit" value="Delete">
+        </form>
+
+    </main>
+
+</body>
+
+</html>

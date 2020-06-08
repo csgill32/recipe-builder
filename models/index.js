@@ -1,9 +1,9 @@
 
 const mongoose = require("mongoose");
 
-const conenctionString = "mongodb://localhost:27017/";
+const connectionString = "mongodb://localhost:27017/";
 
-mongoose.connect(conenctionString, {
+mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -18,5 +18,6 @@ mongoose.connect(conenctionString, {
 
 module.exports = {
     Recipe: require("./Recipe"),
-    Ingredient: require("./Ingredient")
+    Ingredient: require("./Ingredient"),
+    User: require("./User")
 };

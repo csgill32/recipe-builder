@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-    <title>Recipe Show Page</title>
+    <title>New Recipe Page</title>
 </head>
 
 <body>
@@ -40,41 +39,21 @@
     </header>
 
     <section class="flex">
+        <div class="recipe-list">
+            <h2 class="recipe-title">Search Results</h2>
 
-        <div class="recipe-form">
-            <h2 class="recipe-title"><%= recipe.name %> </h2>
-
-            <h3>Category: <%= recipe.category %> </h3>
-            <p>Directions: <%= recipe.directions %> </p>
-
-            <div class="edit-delete">
-                <a href="/recipes/<%= recipe._id %>/edit">Edit Recipe</a>
-
-                <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
-                    <input class="blank" type="submit" value="Delete Recipe">
-                </form>
-            </div>
+            <ul>
+                <% recipes.forEach(recipe => { %>
+                <li>
+                    <a href="/recipes/<%=recipe._id%>"><%=recipe.name%></a>
+                </li>
+                <% }); %>
+            </ul>
 
         </div>
-
-        <div class="ingredient-list">
-            <h2>Ingredients</h2>
-            <a href="/ingredients/new/<%= recipe._id %>">+ Add Ingredient +<br></a><br>
-            <h3>(Click ingredient to edit)</h3>
-
-            <p>
-
-                <% recipe.ingredients.forEach(ingredient => { %>
-            <p>
-                <a href="/ingredients/<%= ingredient._id %>/edit"> <%= ingredient.quantity %>
-                    <%= ingredient.measurement %> <%= ingredient.name %></a>
-            </p>
-            <% }) %>
-
-            </p>
-        </div>
-
     </section>
+
+
 </body>
 
 </html>
